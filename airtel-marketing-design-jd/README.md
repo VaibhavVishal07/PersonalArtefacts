@@ -1,14 +1,17 @@
 # Senior Manager, Marketing Design - Airtel
 
-A single-page job description, styled after shadcn/ui primitives.
+A one-page job description. Reads as a document on screen and prints to a single A4 sheet.
 
-- `index.html`: the page. Open it in a browser; no build step, no dependencies. Inter loads from Google Fonts and falls back to the system sans stack offline.
-- `Airtel-Senior-Manager-Marketing-Design.pdf`: A4 export with fonts embedded.
+- `index.html`: the page. Open it in a browser; no build step, no dependencies.
+- `Airtel-Senior-Manager-Marketing-Design.pdf`: the A4 export, one page, fonts embedded.
 
-**Download PDF** in the header opens the browser print dialog against a dedicated A4 stylesheet (nav and theme toggle hidden, role details reflowed into a three-column strip under the title). Ctrl / ⌘ + P does the same.
+**Download PDF** in the top right opens the print dialog against a dedicated print stylesheet: the buttons drop out, type scales to points, and the whole thing is tuned to land on one page. Ctrl / Cmd + P does the same. The page follows the viewer's light or dark theme; the toggle overrides it.
 
-The page follows the viewer's light or dark theme and the toggle overrides it.
+## Airtel logo
 
-## Airtel mark
+The mark is a hand-drawn SVG approximation, not the official asset, and the wordmark is set in Quicksand rather than Airtel's own face. Replace both when you have the real files:
 
-The logo in the header is a hand-drawn SVG approximation, not the official asset: the mark lives in a single `<symbol id="airtel-mark">` at the end of the body, referenced by both the screen header and the print header. Replace that one path with the official SVG and both update.
+- the mark is the single `<path>` inside `<span class="logo">`
+- the wordmark is the `<span class="word">` beside it
+
+Sizes for screen and print are set on `.logo svg` and `.logo .word` in their respective blocks.
