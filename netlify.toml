@@ -1,0 +1,4 @@
+# Netlify serves the IPTV approval prototype at the site root.
+# No build step: the folder is plain static HTML.
+[build]
+  publish = "airtel-iptv-approval"
