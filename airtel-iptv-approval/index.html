@@ -446,7 +446,7 @@ button { font: inherit; color: inherit; }
   position: absolute; left: 0; top: 0; bottom: 0;
   width: calc(62px + var(--p) * var(--max) + var(--n) * 1px);
   border-radius: 32px;
-  background: var(--red);
+  background: #16A34A;
   opacity: calc(.15 + var(--p) * .85);
 }
 .lbl, .lbl2 {
@@ -496,7 +496,7 @@ button { font: inherit; color: inherit; }
 .phone.dragging .knob { --ks: 1.05; cursor: grabbing; }
 .phone.settling { transition: --p .42s cubic-bezier(.3,1.4,.5,1); }
 .phone.finishing { transition: --p .22s cubic-bezier(.4,0,.2,1); }
-.swipe.done .fill { width: 100%; opacity: 1; background: #16A34A; transition: width .2s, background-color .2s; }
+.swipe.done .fill { width: 100%; opacity: 1; transition: width .2s; }
 .swipe.done { border-color: #16A34A; }
 .swipe.done .knob { background: #fff; color: #16A34A; }
 .swipe.done .knob .ic-arrow { opacity: 0; transform: scale(.5); }
