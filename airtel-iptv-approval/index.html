@@ -10,6 +10,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@500;700;800&display=swap">
 <style>
 @property --p { syntax: '<number>'; inherits: true; initial-value: 0; }
+@property --n { syntax: '<number>'; inherits: true; initial-value: 0; }
 
 /* ---------- Presentation shell tokens ---------- */
 :root {
@@ -334,7 +335,8 @@ h1 {
 .sheet {
   position: absolute; left: 0; right: 0; bottom: 0; z-index: 30;
   border-radius: 32px 32px 0 0;
-  padding: 74px 24px 26px;
+  padding: 68px 24px 26px;
+  box-sizing: border-box;
   text-align: center;
   background: rgba(255, 255, 255, .92);
   -webkit-backdrop-filter: blur(30px) saturate(1.4);
@@ -349,9 +351,9 @@ h1 {
   position: absolute; left: 50%; top: 0;
   width: 92px; height: 92px;
   transform: translate(-50%, -50%);
-  border-radius: 24px;
+  border-radius: 8px;
   background: #0B0B14 url("sony-sports.webp") center / cover no-repeat;
-  box-shadow: 0 0 0 5px #fff, 0 14px 30px -8px rgba(40, 10, 90, .45);
+  box-shadow: 0 12px 28px -10px rgba(40, 10, 90, .45);
   transition: filter .4s ease;
 }
 .ch-logo .mark {
@@ -370,15 +372,10 @@ h1 {
 }
 
 .main { display: flex; flex-direction: column; align-items: center; transition: opacity .25s ease, transform .3s ease; }
-.kicker {
-  font: 600 11.5px/1 Inter, sans-serif;
-  letter-spacing: .16em;
-  color: var(--red);
-}
 .h {
   font: 700 24px/1.2 Inter, sans-serif;
   letter-spacing: -.025em;
-  margin: 12px 0 8px;
+  margin: 0 0 8px;
 }
 .sub { font: 400 15px/1.45 Inter, sans-serif; color: var(--txt-2); margin: 0; max-width: 28ch; text-wrap: balance; }
 
@@ -395,13 +392,15 @@ h1 {
   margin-top: 32px;
   height: 64px;
   border-radius: 32px;
-  background: #EEF1F5;
+  background: #F3F4F6;
+  border: 1.5px solid #C4C8D0;
+  box-sizing: border-box;
   overflow: hidden;
   touch-action: none;
 }
 .fill {
   position: absolute; left: 0; top: 0; bottom: 0;
-  width: calc(64px + var(--p) * var(--max));
+  width: calc(62px + var(--p) * var(--max) + var(--n) * 1px);
   border-radius: 32px;
   background: var(--red);
   opacity: calc(.15 + var(--p) * .85);
@@ -412,29 +411,39 @@ h1 {
   font: 600 16px/1 Inter, sans-serif; letter-spacing: -.01em;
   pointer-events: none;
 }
-.lbl { padding-left: 56px; color: #2A2E38; opacity: calc(1 - var(--p) * 2.4); }
+.lbl { padding-left: 56px; color: #16181D; opacity: calc(1 - var(--p) * 2.4); }
 .lbl2 { color: #fff; opacity: calc((var(--p) - .45) * 6); padding-left: 22px; justify-content: flex-start; font-size: 15px; }
 .swipe.done .lbl2 { justify-content: center; padding-left: 0; padding-right: 56px; }
 .chev {
   position: absolute; right: 22px; top: 50%; transform: translateY(-50%);
-  display: flex; color: #B7BCC6;
+  display: flex; color: #6B7280;
   opacity: calc(1 - var(--p) * 3);
   pointer-events: none;
 }
 .chev svg { margin-left: -5px; animation: chev 1.8s ease-in-out infinite; }
 .chev svg:nth-child(2) { animation-delay: .2s; }
 .chev svg:nth-child(3) { animation-delay: .4s; }
-@keyframes chev { 0%, 100% { color: #C9CDD5; } 40% { color: var(--red); } }
+@keyframes chev { 0%, 100% { color: #9CA3AF; } 40% { color: #16181D; } }
+
+/* nudge: the handle hops right twice, then rests */
+.phone[data-state="request"]:not(.dragging):not(.settling) .swipe { animation: nudge 3.2s ease-in-out 1.4s infinite; }
+@keyframes nudge {
+  0%, 55%, 100% { --n: 0; }
+  64% { --n: 22; }
+  72% { --n: 0; }
+  79% { --n: 11; }
+  86% { --n: 0; }
+}
 
 .knob {
-  position: absolute; left: 4px; top: 4px;
-  width: 56px; height: 56px; border-radius: 50%;
+  position: absolute; left: 3px; top: 3px;
+  width: 55px; height: 55px; border-radius: 50%;
   border: 0; padding: 0;
   display: grid; place-items: center;
-  background: var(--red);
+  background: #16181D;
   color: #fff;
-  box-shadow: 0 4px 12px rgba(196, 18, 27, calc(.25 + var(--p) * .25)), 0 1px 2px rgba(0,0,0,.15);
-  transform: translateX(calc(var(--p) * var(--max))) scale(var(--ks, 1));
+  box-shadow: 0 4px 12px rgba(0, 0, 0, .28), 0 1px 2px rgba(0,0,0,.2);
+  transform: translateX(calc(var(--p) * var(--max) + var(--n) * 1px)) scale(var(--ks, 1));
   cursor: grab;
   touch-action: none;
 }
@@ -463,7 +472,7 @@ h1 {
 
 /* results inside the sheet */
 .result {
-  position: absolute; inset: 74px 24px 26px;
+  position: absolute; inset: 68px 24px 26px;
   display: flex; flex-direction: column; align-items: center; justify-content: center;
   opacity: 0; visibility: hidden;
   transform: translateY(10px);
@@ -472,7 +481,7 @@ h1 {
 .r-h { font: 700 24px/1.2 Inter, sans-serif; letter-spacing: -.025em; margin: 0 0 8px; }
 .r-sub { font: 400 15px/1.45 Inter, sans-serif; color: var(--txt-2); margin: 0; max-width: 28ch; text-wrap: balance; }
 .done-btn {
-  margin-top: 36px; height: 48px; padding: 0 44px;
+  margin-top: 28px; height: 48px; padding: 0 44px;
   border-radius: 24px; border: 0;
   background: #16181D; color: #fff;
   font: 600 15.5px/1 Inter, sans-serif; cursor: pointer;
@@ -489,7 +498,10 @@ h1 {
 .phone[data-state="request"] .scrim { transition-delay: .3s; }
 .phone[data-state="request"] .sheet { transition-delay: .42s; }
 
-.phone:is([data-state="approved"], [data-state="declined"]) .main { opacity: 0; transform: translateY(-8px); pointer-events: none; }
+.phone:is([data-state="approved"], [data-state="declined"]) .main { position: absolute; left: 24px; right: 24px; top: 68px; opacity: 0; transform: translateY(-8px); pointer-events: none; }
+/* the active result joins the flow so the sheet shrinks to fit it */
+.phone[data-state="approved"] .result.ok,
+.phone[data-state="declined"] .result.no { position: relative; inset: auto; padding-top: 4px; }
 .phone[data-state="approved"] .result.ok,
 .phone[data-state="declined"] .result.no { opacity: 1; visibility: visible; transform: none; transition-delay: .15s, .15s, 0s; }
 
@@ -601,7 +613,6 @@ h1 {
         </div>
 
         <div class="main">
-          <div class="kicker">IPTV REQUEST</div>
           <div class="h">Add Sony Sports HD?</div>
           <p class="sub">Someone is trying to add this channel to your IPTV connection.</p>
 
@@ -663,7 +674,7 @@ h1 {
 
   const HINTS = {
     notify:   'Tap the notification to open Airtel Thanks.',
-    request:  'Drag the red handle all the way to the right to approve, or tap Decline.',
+    request:  'drag the black handle all the way to the right to approve, or tap Decline.',
     swiping:  'Keep dragging. Release past the end to approve; let go early and it springs back.',
     approved: 'Approved. The sheet closes by itself after a moment, or tap Done.',
     declined: 'Declined. The sheet closes by itself after a moment, or tap Done.',
@@ -686,7 +697,8 @@ h1 {
   const phone = makePhone('notify', false);
   liveFit.appendChild(phone);
   const $ = s => phone.querySelector(s);
-  const knob = $('.knob'), track = $('.swipe');
+  const knob = $('.knob'), track = $('.swipe'), sheet = $('.sheet');
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   let timers = [];
   let p = 0;
 
@@ -702,7 +714,13 @@ h1 {
     phone.classList.remove('dragging', 'settling', 'finishing');
     track.classList.remove('done');
     if (s !== 'swiping') setP(0); else setP(opts.p ?? MID);
+    const shrink = s === 'approved' || s === 'declined';
+    const h0 = sheet.offsetHeight;
     phone.dataset.state = s;
+    if (shrink && !reduceMotion) {
+      const h1 = sheet.offsetHeight;
+      if (h1 !== h0) sheet.animate([{ height: h0 + 'px' }, { height: h1 + 'px' }], { duration: 480, easing: 'cubic-bezier(.22,1,.36,1)' });
+    }
     markStep(s);
     hintEl.textContent = HINTS[s];
     if (s === 'approved' || s === 'declined') {
