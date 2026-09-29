@@ -424,26 +424,22 @@ button { font: inherit; color: inherit; }
 .sub { font: 400 15px/1.45 Inter, sans-serif; color: var(--txt-2); margin: 0; max-width: 28ch; text-wrap: balance; }
 
 .loc {
-  margin-top: 12px;
-  display: inline-flex; align-items: center; gap: 6px;
-  padding: 6px 12px;
-  border-radius: 999px;
-  background: #F3F4F6;
+  display: inline-flex; align-items: center; gap: 5px;
   font: 500 13px/1 Inter, sans-serif;
-  color: #3A3F4B;
+  color: var(--txt-3);
+  margin-bottom: 10px;
 }
-.loc svg { color: #6B7280; flex: none; }
-.cost { margin-top: 24px; }
+.loc svg { flex: none; }
+.cost { margin-top: 28px; }
 .cost .amt { font: 700 32px/1 Inter, sans-serif; letter-spacing: -.03em; font-variant-numeric: tabular-nums; }
 .cost .per { font: 500 16px/1 Inter, sans-serif; color: var(--txt-2); margin-left: 2px; }
-.cost p { margin: 10px auto 0; max-width: 32ch; text-wrap: balance; font: 400 13.5px/1.45 Inter, sans-serif; color: var(--txt-2); }
-.cost p b { font-weight: 600; color: var(--txt); }
+.cost p { margin: 8px 0 0; font: 400 13.5px/1.4 Inter, sans-serif; color: var(--txt-2); }
 
 /* swipe to approve */
 .swipe {
   position: relative;
   align-self: stretch;
-  margin-top: 32px;
+  margin-top: 28px;
   height: 64px;
   border-radius: 32px;
   background: #F3F4F6;
@@ -457,7 +453,7 @@ button { font: inherit; color: inherit; }
   width: calc(62px + var(--p) * var(--max) + var(--n) * 1px);
   border-radius: 32px;
   background: #16A34A;
-  opacity: calc(.15 + var(--p) * .85);
+  opacity: calc(var(--p) * 1.6);
 }
 .lbl, .lbl2 {
   position: absolute; inset: 0;
@@ -683,16 +679,16 @@ button { font: inherit; color: inherit; }
         </div>
 
         <div class="main">
-          <div class="h">Add Sony Sports HD?</div>
-          <p class="sub">Someone is trying to add this channel to your IPTV connection.</p>
           <div class="loc">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
             <span>Sonipat, Haryana</span>
           </div>
+          <div class="h">Add Sony Sports HD?</div>
+          <p class="sub">Someone wants to add this channel to your IPTV connection.</p>
 
           <div class="cost">
             <div><span class="amt">₹22</span><span class="per">/month</span></div>
-            <p>Recurring charge, added to your Airtel bill every month. The channel is activated after approval.</p>
+            <p>Recurring charge on your Airtel bill</p>
           </div>
 
           <div class="swipe">
@@ -749,7 +745,7 @@ button { font: inherit; color: inherit; }
 
   const HINTS = {
     notify:   'Tap the notification to open Airtel.',
-    request:  'drag the black handle all the way to the right to approve, or tap Decline.',
+    request:  'Drag the black handle all the way to the right to approve, or tap Decline.',
     swiping:  'Keep dragging. Release past the end to approve; let go early and it springs back.',
     approved: 'Approved. The sheet closes by itself after a moment, or tap Done.',
     declined: 'Declined. The sheet closes by itself after a moment, or tap Done.',
