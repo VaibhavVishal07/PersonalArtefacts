@@ -423,7 +423,17 @@ button { font: inherit; color: inherit; }
 }
 .sub { font: 400 15px/1.45 Inter, sans-serif; color: var(--txt-2); margin: 0; max-width: 28ch; text-wrap: balance; }
 
-.cost { margin-top: 28px; }
+.loc {
+  margin-top: 12px;
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: #F3F4F6;
+  font: 500 13px/1 Inter, sans-serif;
+  color: #3A3F4B;
+}
+.loc svg { color: #6B7280; flex: none; }
+.cost { margin-top: 24px; }
 .cost .amt { font: 700 32px/1 Inter, sans-serif; letter-spacing: -.03em; font-variant-numeric: tabular-nums; }
 .cost .per { font: 500 16px/1 Inter, sans-serif; color: var(--txt-2); margin-left: 2px; }
 .cost p { margin: 10px 0 0; font: 400 13.5px/1.45 Inter, sans-serif; color: var(--txt-2); }
@@ -675,6 +685,10 @@ button { font: inherit; color: inherit; }
         <div class="main">
           <div class="h">Add Sony Sports HD?</div>
           <p class="sub">Someone is trying to add this channel to your IPTV connection.</p>
+          <div class="loc">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>Sonipat, Haryana</span>
+          </div>
 
           <div class="cost">
             <div><span class="amt">₹22</span><span class="per">/month</span></div>
