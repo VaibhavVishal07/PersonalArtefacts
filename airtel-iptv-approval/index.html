@@ -436,7 +436,7 @@ button { font: inherit; color: inherit; }
 .cost { margin-top: 24px; }
 .cost .amt { font: 700 32px/1 Inter, sans-serif; letter-spacing: -.03em; font-variant-numeric: tabular-nums; }
 .cost .per { font: 500 16px/1 Inter, sans-serif; color: var(--txt-2); margin-left: 2px; }
-.cost p { margin: 10px 0 0; font: 400 13.5px/1.45 Inter, sans-serif; color: var(--txt-2); }
+.cost p { margin: 10px auto 0; max-width: 32ch; text-wrap: balance; font: 400 13.5px/1.45 Inter, sans-serif; color: var(--txt-2); }
 .cost p b { font-weight: 600; color: var(--txt); }
 
 /* swipe to approve */
@@ -692,7 +692,7 @@ button { font: inherit; color: inherit; }
 
           <div class="cost">
             <div><span class="amt">₹22</span><span class="per">/month</span></div>
-            <p><b>Recurring charge, added to your Airtel bill every month.</b><br>The channel is activated after approval.</p>
+            <p>Recurring charge, added to your Airtel bill every month. The channel is activated after approval.</p>
           </div>
 
           <div class="swipe">
